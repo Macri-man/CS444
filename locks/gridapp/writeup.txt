@@ -1,0 +1,34 @@
+
+Alexander Macri
+
+What can you conclude about how grid size, number of threads, and locking granularity affect performance?
+
+Larger grid make better performeance because locks are less likely to wait on each other for the resource.
+Smaller grid size make lock wait for eachother and also may cause more collision errors in resource management.
+More threads increase time but only with bigger grids and granularity that allows mulitples resources to be acted upon 
+at the same time. Fewer threads causes collision with resources and more wit time for threads to unlock there resources.
+Grid granularity causes less performance since each thread has to with for resourse in grid even though that may not 
+need the same cell or row. Row granularity increase preformance but cell granularity allows the thread to interact 
+directly with the resource being changed which allows multiple thread to interact with the grid at the same time. 
+
+What general results can you conclude from this exercise? When does fine granularity locking have the biggest effect? 
+What costs does it impose?
+
+Threads are useful there is multiple that can interact seperatly on a task or function that cane be taken place in 
+parallel instead of consecutively. When alot of threads want to change the same value stored or interact with the same 
+resource. Fine granularity allows so teh system has more control over the information being changed but cost time in the 
+threads interacting with the given data.
+
+Experiment with no locking. Without any modifcations, you shouldn't get any integrity violation with 1 thread. Why? With 
+a big enough grid and few enough threads, you might avoid data integrity violations. Why?
+
+No violation with one thread is because there is only one operation taken place on the given data. Bigger grids allow threads more freedom to interact with the ceel with any conflicts thus sometime giving teh illusion that the threads are protecting the correctness of rteh data after there finished executing.
+
+Why do you think it is there? Try commenting it out or moving it to a different location in the block of swapping code. 
+Try moving it to just before the first line of the swapping code but after you have obtained your lock.
+What effects does this have on performance and correctness of final sum? Try experimenting with all levels of 
+granularity on a 10x10 grid with 10 threads.
+Anything surprising?
+What can you say about why this sleep(1) is there and where it is placed?
+If we didn't have this sleep(1) there, how would this change the assignment?
+What does this say about when multithreading and synchronization make sense?

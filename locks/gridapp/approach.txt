@@ -1,0 +1,4 @@
+My avoidance of deadlock is based on the deterministic spinlock approach of 
+locking the cell or orw that comes first in the grid then second so if row1 
+and row2 where not equal it would lock the row1 if row1<row2 same for the 
+cells granularity.

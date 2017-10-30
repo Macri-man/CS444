@@ -1,0 +1,34 @@
+Solution2 for the barbershop problem: 
+Semaphore Customers = 0
+Semaphore Barber = 0
+Semaphore accessSeats (mutex) = 1
+int NumberOfFreeSeats = N //total number of seats
+
+<Customer>
+while(true) { //runs in an infinite loop
+   SemWait(accessSeats) //tries to get access to the chairs
+   if ( NumberOfFreeSeats > 0 ) { //if there are any free seats
+     NumberOfFreeSeats-- //sitting down on a chair
+     SemSignal(Customers) //notify the barber, who's waiting that there is a customer
+     SemSignal(accessSeats) //don't need to lock the chairs anymore
+     SemWait(Barber) //now it's this customer's turn, but wait if the barber is busy
+     //here the customer is having his hair cut
+   } else { //there are no free seats
+     //tough luck
+     SemSignal(accessSeats) //but don't forget to release the lock on the seats
+     //customer leaves without a haircut
+   }
+ }
+
+<Barber>
+while(true) { //runs in an infinite loop
+   //tries to acquire a customer - if none is available he goes to sleep
+   SemWait(Customers) 
+   
+   //at this time he has been awakened - want to modify the number of available seats 
+   SemWait(accessSeats) 
+   NumberOfFreeSeats++ //one chair gets free
+   SemSignal(Barber)  //the barber is ready to cut
+   SemSignal(accessSeats) //we don't need the lock on the chairs anymore
+   //here the barber is cutting hair
+ }

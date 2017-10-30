@@ -1,0 +1,124 @@
+Varying threads, 100 files, 100 lines
+Using 1 threads...
+Directory of files thread/
+Number of files in directory: 100
+
+real	0m0.043s
+user	0m0.031s
+sys	0m0.011s
+Using 2 threads...
+Directory of files thread/
+Number of files in directory: 100
+
+real	0m0.022s
+user	0m0.029s
+sys	0m0.011s
+Using 4 threads...
+Directory of files thread/
+Number of files in directory: 100
+
+real	0m0.015s
+user	0m0.035s
+sys	0m0.015s
+Using 8 threads...
+Directory of files thread/
+Number of files in directory: 100
+
+real	0m0.010s
+user	0m0.037s
+sys	0m0.015s
+Using 16 threads...
+Directory of files thread/
+Number of files in directory: 100
+
+real	0m0.011s
+user	0m0.037s
+sys	0m0.016s
+Lines 100, 200, 400, 800, 1600, 100 files, 4 threads
+Using 4 threads...
+Directory of files thread/
+Number of files in directory: 100
+
+real	0m0.016s
+user	0m0.039s
+sys	0m0.014s
+Using 4 threads...
+Directory of files thread/
+Number of files in directory: 100
+
+real	0m0.037s
+user	0m0.125s
+sys	0m0.014s
+Using 4 threads...
+Directory of files thread/
+Number of files in directory: 100
+
+real	0m0.121s
+user	0m0.451s
+sys	0m0.017s
+Using 4 threads...
+Directory of files thread/
+Number of files in directory: 100
+
+real	0m0.457s
+user	0m1.756s
+sys	0m0.020s
+Using 4 threads...
+Directory of files thread/
+Number of files in directory: 100
+
+real	0m1.797s
+user	0m7.031s
+sys	0m0.034s
+Files 400, 800, 1600, 3200, 6400, 4 threads, length 10
+Using 4 threads...
+Directory of files thread/
+Number of files in directory: 400
+
+real	0m0.057s
+user	0m0.010s
+sys	0m0.056s
+Using 4 threads...
+Directory of files thread/
+Number of files in directory: 800
+
+real	0m0.651s
+user	0m0.019s
+sys	0m0.107s
+Using 4 threads...
+Directory of files thread/
+Number of files in directory: 1600
+
+real	0m1.055s
+user	0m0.039s
+sys	0m0.231s
+Using 4 threads...
+Directory of files thread/
+Number of files in directory: 3200
+
+real	0m3.748s
+user	0m0.074s
+sys	0m0.475s
+Using 4 threads...
+Directory of files thread/
+Number of files in directory: 6400
+
+real	0m18.989s
+user	0m0.144s
+sys	0m0.927s
+
+
+I found that for varying threads constant number of files and number of lines in files. The more thread
+you will have the faster the program will run. But will not go any faster if the number ot threads is 
+greater than number of files.
+
+I found that for constant threads and files with varying number of lines in file. With more lines the 
+program will take more time for the program to complete.
+
+I found that for constant threads and lines with varying of files. More files greatly increases the time 
+the program to complete.
+
+How does the number of threads impact execution time as the line numbers vary?
+The time to program runs increases but only when the lines increase.
+How does the number of threads impact execution time as the number of files vary?
+The time to program runs increases greatly with a huge number of files.

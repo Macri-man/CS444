@@ -1,0 +1,7 @@
+gridapp.c is the lock code
+
+makefile makes gridapp.c
+
+approach.txt is the explation of how I tried to avoid deadlocks.
+
+writeup.pdf is the analysis

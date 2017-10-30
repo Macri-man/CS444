@@ -1,0 +1,68 @@
+10 of 10. Comment: 
+prompt indicates current working directory. (10)
+
+
+0 of 10. Comment: 
+Redirect STDIN and STDOUT for the new processes by using < and >. (10)
+
+
+0 of 10. Comment: not supported
+Place commands in the background with an &. (10)
+
+
+0 of 15. Comment: not done
+check background jobs by job. (15)
+
+
+15 of 15. Comment: 
+history commands list. (15)
+
+
+10 of 10. Comment: 
+Repeat command by !# / !-# repeat the history command. (10)
+
+
+5 of 10. Comment: exit doesn't work 
+cd, exit and kill. (10)
+
+
+0 of 5. Comment: 
+exit while there are background processes, notify the user. (5)
+
+
+10 of 10. Comment: 
+9. Good comments and documentation, and also well code-style. (10)
+
+
+0 of 5. Comment: debug info shown 
+Safe code and error-checking, no debug info. (5)
+
+
+0 of 40. Comment: 
+Port to windows. (40)
+
+
+0 of 5. Comment: 
+Support build-in command parameters. (5)
+
+
+0 of 5. Comment: 
+Support pipe and advanced IO redirections. (5)
+
+
+0 of 5. Comment: 
+Build-in fg and bg commands. (5)
+
+
+0 of 5. Comment: 
+Enhanced history command to scroll through the history list. (5)
+
+
+0 of 5. Comment: 
+Rewrite a better parser to provide more relax cosntrains. (5)
+
+
+0 of 20. Comment: 
+Others good and convenient features. (TBD)
+
+

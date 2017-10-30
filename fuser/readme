@@ -1,0 +1,9 @@
+README 
+
+macraid/0384086 
+
+all basic function completed(I think)
+chown and chmod are done.
+fschk is not complete.
+
+truncate may not work in particular cases.

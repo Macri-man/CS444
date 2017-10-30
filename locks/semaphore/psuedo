@@ -1,0 +1,24 @@
+waiting : integer :=0; %customers waiting to be cut
+guard : semaphore :=1; % to delimit a critical region to protect waiting
+customers : semaphore:= 0; %counting semaphore of customers
+barber : semaphore :=0; %is barber waiting for a customer (1) or not (0)
+ 
+the barber executes the following program:
+WAIT(customers); %sleeps if there are none
+WAIT (guard);
+waiting := waiting - 1; %otherwise, changes waiting under exclusion
+SIGNAL(barber); % and indicates his readiness to cut hair
+SIGNAL (guard);
+cut hair
+ 
+a customer executes:
+WAIT (guard); %test and set waiting under exclusion
+if waiting < chairs % if there is a free chair to sit and wait
+then	{ waiting := waiting+1;
+SIGNAL(customers) % indicate one more customer
+SIGNAL(guard) % release the exclusion on waiting
+WAIT(barber); % use the barber resource
+have haircut; }
+else SIGNAL(guard); % if there are no free chairs just release
+% the exclusion on waiting and go away.
+ 

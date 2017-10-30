@@ -1,0 +1,79 @@
+You writeup should describe how you implemented 
+
+fs_getattr()
+if path is / then give it the attributes of a directory
+Since we only have I can assume the rest are files I use find file to get the file. 
+Then receive the proper attributes of the file.
+If path does not root or a file return an error.
+
+fs_readdir()
+I add . and .. to the buf with the use of the filler function.
+Since we have a rootdir struct I loop through the files in the struct and add them with the use of the filler function
+to the buf.
+
+fs_create()
+I check to see if directory is already full since there is a limit on number of files in directory.
+I find a free inode if inodes are full return error. If no errors then allocate a file in the root directory struct. 
+I use allocate_file function with the path and inode number.  
+
+fs_open()
+Checkes to see if a file can be opened by using find_file function.
+
+fs_read()
+Gets the file from path then reads the inode using the read_inode function to get the contents of the inode of the file 
+based on the files inode number.
+Checks if offset is greater than the bytes in the file. 
+Gets the current byte base on the offset.
+Gets the current block.
+Reads the block at teh given offset into buf while updating the number of bytes read. 
+returns the bytes read into buf.
+
+fs_write()
+Gets the file from path then reads the inode using the read_inode function to get the contents of the inode of the file 
+based on the files inode number.Checks if the new block size is valid from the limitations on size in the this 
+filesystem.
+Checks if new_size of the file is greater than the current size of the file. if the check is true it allocates new 
+blocks to the inode;
+Gets the size to be written to buf.
+Gets the starting block to write to based on the offset.
+Writes to the blocks base on the given offset and starting block.
+
+fs_truncate()
+Gets the file from path then reads the inode using the read_inode function to get the contents of the inode of the file 
+based on the files inode number.
+Gets the offsetblock and frees the rest of the blocks in inode using the free_block.
+update inode using the write_inode. 
+
+fs_unlink()
+Gets the file from path then reads the inode using the read_inode function to get the contents of the inode of the file 
+based on the files inode number.
+Since there is only one hardlink per file. I free the contents of the inode of the file.
+Update directory using remove_file. Update inode using write_inode.
+
+fs_rename()
+Since there are limited size check to see if newpath is of appropriate size.
+Gets the file from path.
+calls rename_file function that renames the file.
+
+What all things you considered while exporting this functions in your file system. Particularly, you should explain how 
+you take care of the order of operations to maintain consistency in the file system in case of crashes.
+
+Made sure to update the inodes and directory after every operation so the filesystem will reflect changes.
+
+There is a limit in the number of inodes and files along with file names.
+If there was no limit then many of the check of the system would be on the memory of the computer and persistance of the 
+enormity of the files and directories.
+There are also no subdirectories.
+If there were more directories the hardlinks and symlinks would need more checking to keep the consistency of the
+filesystem in check.
+
+What is the largest file you can create in your file system?
+409600 bytes
+What is the largest number of files?
+100 files
+What is the largest number of directory it can support? How many subdirectory it can support?
+1 directory of size 40960000bytes and no subdirectorys.
+If we reduce the block size, we also reduce the size of the bit map and the root directory
+How do the answers to the above questions change with a block size of 1024? 8192?
+largest file with block size of 1024 is 102400bytes
+largest file with block size of 8192 is 819200bytes
